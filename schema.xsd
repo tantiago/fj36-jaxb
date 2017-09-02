@@ -6,10 +6,10 @@
   <xs:complexType name="livro">
     <xs:sequence>
       <xs:element name="categoria" type="tns:CAT" minOccurs="0"/>
-      <xs:element name="codigo" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigo" type="tns:codigo" minOccurs="1"/>
       <xs:element name="nomeAutor" type="xs:string" minOccurs="0"/>
       <xs:element name="titulo" type="xs:string" minOccurs="0"/>
-      <xs:element name="valor" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="valor" type="tns:valor" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -18,5 +18,16 @@
       <xs:element name="nome" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:simpleType name="codigo">
+  	<xs:restriction base="xs:string">
+  		<xs:pattern value="[A-Z]{3}" />
+  	</xs:restriction>
+  </xs:simpleType>
+ <xs:simpleType	name="valor">
+	<xs:restriction	base="xs:decimal">
+		<xs:minExclusive	value="0"/>
+		<xs:fractionDigits	value="2"/>
+	</xs:restriction>
+</xs:simpleType>
 </xs:schema>
 
